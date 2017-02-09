@@ -5,3 +5,19 @@ app_admin:
 app_home:
     path: /
     defaults: { _controller: AppBundle:App:home }
+
+app_publication:
+    path: /publication/{publicationId}
+    defaults: { _controller: AppBundle:App:publication }
+
+app_science:
+    path: /sciences/{scienceId}
+    defaults: { _controller: AppBundle:App:science }
+
+app_sciences:
+    path: /sciences
+    defaults: { _controller: AppBundle:App:sciences }
+
+app_publish:
+    path: /publish
+    defaults: { _controller: AppBundle:App:publish }

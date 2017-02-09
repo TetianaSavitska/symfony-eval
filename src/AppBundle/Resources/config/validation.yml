@@ -1,0 +1,18 @@
+AppBundle\Entity\Publication:
+    properties:
+        title:
+            - NotBlank: ~
+        publishedAt:
+            - NotBlank: ~
+            - Type: \DateTime
+        science:
+            - Count:
+                min: 1
+            - Valid: ~
+#    constraints:
+#        - AppBundle\Validator\Constraints\Publication: ~
+
+AppBundle\Entity\Science:
+    properties:
+        title:
+            - NotBlank: ~
