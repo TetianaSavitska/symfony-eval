@@ -6,8 +6,6 @@ AppBundle\Entity\Publication:
             - NotBlank: ~
             - Type: \DateTime
         science:
-            - Count:
-                min: 1
             - Valid: ~
 #    constraints:
 #        - AppBundle\Validator\Constraints\Publication: ~

@@ -1,6 +1,6 @@
 {% extends 'AppBundle::base.html.twig' %}
 
-{% block content %}
+{% block jumbotron %}
 <div class="jumbotron">
     <div class="container">
         <h1>SciPub</h1>
@@ -11,8 +11,9 @@
         </p>
     </div>
 </div>
+{% endblock %}
 
-<div class="container">
+{% block content %}
 
     <!-- 3 dernières publication (par date de publication) -->
     {% for publication in publications %}
@@ -27,7 +28,7 @@
             </p>
             <p>
                 <!-- Lien vers le détail de la publication -->
-                <a href="{{ path('app_publication', {'publicationId': publication.id}) }}"
+                <a href="{{ path('app_publication', {'publicationId': publication.id, 'scienceId': publication.science.id}) }}"
                    class="btn btn-sm btn-default">
                     Lire la publication
                 </a>
@@ -35,5 +36,4 @@
         </div>
     {% endfor %}
 
-</div>
 {% endblock %}

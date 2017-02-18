@@ -1,0 +1,17 @@
+{% block aside %}
+	
+	<h2>Sciences</h2>
+	<table class="table ">
+		{% for science in sciences %}
+			<tr>
+				<td>
+					<a href="{{ path('app_science', {'scienceId': science.id}) }}"><strong class="text-uppercase">{{ science.title }}</strong></a>
+				</td>
+				<td>
+					<a href="/sciences/{{ science.id }}#{{ science.id }}" ><em>Publications</em></a>
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+{% endblock %}

@@ -34,7 +34,8 @@ class PublicationController extends Controller
     public function newAction(Request $request)
     {
         $publication = new Publication();
-        $form = $this->createForm('AppBundle\Form\PublicationType', $publication);
+        $form = $this
+            ->createForm('AppBundle\Form\PublicationType', $publication);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

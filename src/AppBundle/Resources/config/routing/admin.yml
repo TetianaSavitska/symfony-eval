@@ -10,3 +10,7 @@ app_admin_publication:
 app_admin_science:
     resource: "admin/science.yml"
     prefix:   /science
+
+app_admin_comment:
+    resource: "admin/comment.yml"
+    prefix:   /comment

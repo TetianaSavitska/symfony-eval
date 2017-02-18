@@ -1,9 +1,8 @@
 {% extends 'AppBundle::base.html.twig' %}
 
-{% block content %}
-<div class="container">
-
+{% block jumbotron %}
     <!-- Science -->
+    <div class="container">
 
     <div class="science-thumb">
         <h1>{{ publication.science.title }}<!-- titre --></h1>
@@ -19,9 +18,10 @@
     </div>
 
     <hr>
-</div>
+    </div>
+{% endblock %}
 
-<div class="container">
+{% block content %}
 
     <!-- Publication -->
 
@@ -31,16 +31,50 @@
             Publié par <strong>{{ publication.author }}</strong>,
             le <em>{{ publication.publishedAt | date('Y-m-d H:m:s') }}</em>.
         </p>
-        <p>
-                {{ publication.description | raw }}
+        <p class="panel-body">
+            {{ publication.description }}
         </p>
     </div>
 
     <hr>
 
     <div>
-        {{ publication.content }}
+        {{ publication.content | raw}}
     </div>
 
-</div>
+    <hr>
+
+    <!-- Comment -->
+
+    <h3>Comments</h3>
+    <hr>
+
+    {% if (comments) %}
+        {% for comment in comments %}
+            <div class="panel panel-default">
+                <p class="panel-heading">
+                    Publié par <strong>{{ comment.pseudo }}</strong>.
+                </p>
+                <p class="panel-body">
+                    {{ comment.message }}
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="panel panel-default">
+            <p class="panel-body">
+                Be the first to leave your comment.
+            </p>
+        </div>
+    {% endif%}
+
+    <hr>
+    <h3>Leave your comment here</h3>
+    <hr>
+    <!--new comment-->
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+
 {% endblock %}

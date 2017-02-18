@@ -18,20 +18,28 @@ class PublicationType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('author')
-            ->add('description')
-            ->add('content')
-            ->add('publishedAt')
-            ->add('validated')
             ->add('science', EntityType::class, [
                 'class' => Science::class
             ])
-            ->add('save', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-sm btn-primary',
-                ]
-            ])
-        ;
+            ->add('author')
+            ->add('description')
+            ->add('content');
+
+            if ($options['admin']){
+                $builder->add('publishedAt');
+            }
+
+            if ($options['validated_field']){
+                $builder->add('validated');
+            }
+
+            $builder
+                ->add('save', SubmitType::class, [
+                    'attr' => [
+                        'class' => 'btn btn-sm btn-primary',
+                    ]
+            ]);
+
     }
     
     /**
@@ -39,9 +47,13 @@ class PublicationType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Publication'
-        ));
+        $resolver
+            ->setDefaults(array(
+                'data_class' => 'AppBundle\Entity\Publication',
+                'validated_field' => true,
+                'admin' => true,
+            ))
+            ->setAllowedTypes('validated_field', 'bool');
     }
 
     /**

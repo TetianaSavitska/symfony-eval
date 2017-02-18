@@ -1,45 +1,46 @@
 {% extends 'AppBundle::base.html.twig' %}
 
-{% block content %}
-
-<div class="container">
+{% block jumbotron %}
 
     <!-- Science -->
+    <div class="container">
+        <div class="science-thumb">
+            <h1>{{ science.title }}</h1>
+            <p>
+                {{ science.description }}
+            </p>
+        </div>
 
-    <div class="science-thumb">
-        <h1>{{ science.title }}</h1>
-        <p>
-            {{ science.description }}
-        </p>
+        <hr>
     </div>
 
-    <hr>
-</div>
+{% endblock %}
 
-<div class="container">
+{% block content %}
 
-    <!-- Liste des publications pour cette science -->
+    <div id="{{ science.id }}">
 
-    {% for publication in publications %}
-    <div class="publication-thumb">
-        <h2>{{ publication.title }}</h2>
-        <p>
-            Publié par <strong>{{ publication.author }}</strong>,
-            le <em>{{ publication.publishedAt | date('Y-m-d H:m:s') }}</em>.
-        </p>
-        <p>
-            {{ publication.description }}
-        </p>
-        <p>
-            <!-- Lien vers le détail de la publication -->
-            <a href="{{ path('app_publication', {'publicationId': publication.id}) }}"
-               class="btn btn-sm btn-default">
-                Lire la publication
-            </a>
-        </p>
+        <!-- Liste des publications pour cette science -->
+        {% for publication in publications %}
+        <div class="publication-thumb">
+            <h2>{{ publication.title }}</h2>
+            <p>
+                Publié par <strong>{{ publication.author }}</strong>,
+                le <em>{{ publication.publishedAt | date('Y-m-d H:m:s') }}</em>.
+            </p>
+            <p>
+                {{ publication.description }}
+            </p>
+            <p>
+                <!-- Lien vers le détail de la publication -->
+                <a href="{{ path('app_publication', {'publicationId': publication.id, 'scienceId': science.id}) }}"
+                   class="btn btn-sm btn-default">
+                    Lire la publication
+                </a>
+            </p>
+        </div>
+        {% endfor %}
+
     </div>
-    {% endfor %}
-
-</div>
 
 {% endblock %}

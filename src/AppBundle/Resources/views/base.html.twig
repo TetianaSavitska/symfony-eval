@@ -28,8 +28,19 @@
         {% include 'AppBundle:Layout:navbar.html.twig' %}
     </div>
 
-    <!-- Contenu -->
-    {% block content %}{% endblock %}
+    {% block jumbotron %}{% endblock %}
+
+     <main class="container">
+        <div class="row">
+            <article class="col-md-9 col-sm-9">
+                <!-- Contenu -->
+                {% block content %}{% endblock %}
+            </article>
+            <aside class="col-md-3 col-sm-3">
+                {{  render(controller('AppBundle:App:sidebar')) }}
+            </aside>
+        </div>
+    </main>
 
 
     <script src="{{ asset('bundles/app/js/ie10-viewport-bug-workaround.js') }}"></script>

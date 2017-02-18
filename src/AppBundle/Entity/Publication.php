@@ -47,6 +47,21 @@ class Publication
      */
     private $validated;
 
+    /**
+    * Get the string representation.
+    *
+    * @return string
+    */
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
+    public function __construct()
+    {
+        $this->publishedAt = new \DateTime();
+        $this->validated = false;
+    }
 
     /**
      * Get id
@@ -65,7 +80,7 @@ class Publication
      *
      * @return Publication
      */
-    public function setScience($science)
+    public function setScience(Science $science)
     {
         $this->science = $science;
 

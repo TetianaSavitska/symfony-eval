@@ -2,12 +2,15 @@ app_admin:
     resource: "@AppBundle/Resources/config/routing/admin.yml"
     prefix:   /admin
 
+app_security:
+    resource: routing/security.yml
+
 app_home:
     path: /
     defaults: { _controller: AppBundle:App:home }
 
 app_publication:
-    path: /publication/{publicationId}
+    path: /publication/{scienceId}/{publicationId}
     defaults: { _controller: AppBundle:App:publication }
 
 app_science:

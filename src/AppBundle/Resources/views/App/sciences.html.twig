@@ -1,26 +1,30 @@
 {% extends 'AppBundle::base.html.twig' %}
 
+{% block jumbotron %}
+
+    <div class="container">
+        <h1>Sciences</h1>  
+    </div>
+    
+{% endblock %}
+
+
 {% block content %}
-
-<div class="container">
-
-    <h1>Sciences</h1>
 
     <!-- Liste des sciences -->
     {% for science in sciences %}
-    <div class="science-thumb">
-        <h2><a href="{{ path('app_science', {'scienceId': science.id})}}">{{ science.title }}</a></h2>
-        <p>
-            {{ science.description }}
-        </p>
-        <p>
-            <!-- Lien vers la page détail science -->
-            <a href="{{ path('app_science', {'scienceId': science.id}) }}" class="btn btn-sm btn-default">
-                Voir les publications
-            </a>
-        </p>
-    </div>
+        <div class="science-thumb">
+            <h2><a href="{{ path('app_science', {'scienceId': science.id})}}">{{ science.title }}</a></h2>
+            <p>
+                {{ science.description }}
+            </p>
+            <p>
+                <!-- Lien vers la page détail science -->
+                <a href="{{ path('app_science', {'scienceId': science.id}) }}" class="btn btn-sm btn-default">
+                    Voir les publications
+                </a>
+            </p>
+        </div>
     {% endfor %}
-</div>
 
 {% endblock %}

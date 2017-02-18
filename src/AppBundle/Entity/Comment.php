@@ -13,7 +13,7 @@ class Comment
     private $id;
 
     /**
-     * @var \stdClass
+     * @var \Publication
      */
     private $publication;
 
@@ -41,11 +41,11 @@ class Comment
     /**
      * Set publication
      *
-     * @param \stdClass $publication
+     * @param \Publication $publication
      *
      * @return Comment
      */
-    public function setPublication($publication)
+    public function setPublication(Publication $publication)
     {
         $this->publication = $publication;
 
